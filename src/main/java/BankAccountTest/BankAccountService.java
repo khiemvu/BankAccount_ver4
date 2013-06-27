@@ -9,12 +9,16 @@ package BankAccountTest;
  */
 public class BankAccountService
 {
+    private static BankAccountDao bankAccountDao;
     public static void setupData(BankAccountDao bankAccountDao)
     {
+        BankAccountService.bankAccountDao = bankAccountDao;
     }
 
     public static BankAccount opentBankAccount(String accNumber)
     {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        BankAccount bankAccount = new BankAccount(accNumber);
+        bankAccountDao.saveAccount(bankAccount);
+        return bankAccount;  //To change body of created methods use File | Settings | File Templates.
     }
 }

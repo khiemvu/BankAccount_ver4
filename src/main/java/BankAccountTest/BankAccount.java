@@ -9,6 +9,13 @@ package BankAccountTest;
  */
 public class BankAccount
 {
+    String numberAcc;
+    double balance;
+
+    BankAccount(String numberAcc){
+        this.numberAcc = numberAcc;
+        this.balance = 0;
+    }
     public double getBalance()
     {
         return 0;  //To change body of created methods use File | Settings | File Templates.
