@@ -13,4 +13,9 @@ public class BankAccountDao
     {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public BankAccount getInfoAboutAccount(String numberAcc)
+    {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

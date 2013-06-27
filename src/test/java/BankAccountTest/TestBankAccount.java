@@ -35,5 +35,14 @@ public class TestBankAccount
 
         assertEquals(0, bankAccountArgument.getValue().getBalance(), 0.01);
     }
+    @Test
+    public void testGetInfoAboutBankAccount(){
+        BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
+
+        ArgumentCaptor<BankAccount> bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
+        verify(bankAccountDao).getInfoAboutAccount("0123456789");
+
+        assertEquals(0, bankAccountArgument.getValue().getBalance(), 0.01);
+    }
 
 }
