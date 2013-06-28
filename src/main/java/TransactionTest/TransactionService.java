@@ -21,4 +21,11 @@ public class TransactionService
         transactionDAO.saveTransaction(transaction);
         return transaction;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public static Transaction transactionWithdraw(String accNum, long time, double amount, String des)
+    {
+        Transaction transaction = new Transaction(accNum, time, amount, des);
+        transactionDAO.saveTransaction(transaction);
+        return transaction;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

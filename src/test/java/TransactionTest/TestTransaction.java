@@ -40,5 +40,15 @@ public class TestTransaction
 
         assertEquals(timestamp.getTime(), transactionArgument.getValue().getTime());
     }
+    @Test
+    public void testGetTimestampWhenWithdraw(){
+
+        TransactionService.transactionWithdraw("0123456789", 1000L, 100, "withdraw");
+        when(timestamp.getTime()).thenReturn(1000L);
+        ArgumentCaptor<Transaction> transactionArgument = ArgumentCaptor.forClass(Transaction.class);
+        verify(transactionDAO).saveTransaction(transactionArgument.capture());
+
+        assertEquals(timestamp.getTime(), transactionArgument.getValue().getTime());
+    }
 
 }
