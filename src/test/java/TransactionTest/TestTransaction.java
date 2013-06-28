@@ -1,10 +1,17 @@
 package TransactionTest;
 
 import org.junit.Before;
+import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+
 import java.util.Date;
+
+import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,4 +31,14 @@ public class TestTransaction
         MockitoAnnotations.initMocks(this);
         TransactionService.setUpData(transactionDAO);
     }
+    @Test
+    public void testGetTimestampWhenDeposit(){
+        TransactionService.transactionDeposit("0123456789", 1000L, 100, "deposit");
+        when(timestamp.getTime()).thenReturn(1000L);
+        ArgumentCaptor<Transaction> transactionArgument = ArgumentCaptor.forClass(Transaction.class);
+        verify(transactionDAO).saveTransaction(transactionArgument.capture());
+
+        assertEquals(timestamp.getTime(), transactionArgument.getValue().getTime());
+    }
+
 }

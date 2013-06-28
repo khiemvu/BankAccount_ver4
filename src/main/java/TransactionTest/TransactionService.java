@@ -13,4 +13,9 @@ public class TransactionService
     {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public static Transaction transactionDeposit(String accNum, long time, double amount, String des)
+    {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

@@ -9,4 +9,8 @@ package TransactionTest;
  */
 public class TransactionDAO
 {
+    public Transaction saveTransaction(Transaction transaction)
+    {
+        return transaction;
+    }
 }
