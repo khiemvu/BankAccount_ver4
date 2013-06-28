@@ -68,18 +68,18 @@ public class TestBankAccount
     public void testDoTransactionWitdraw(){
         BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
         when(bankAccountDao.getInfoAboutAccount("0123456789")).thenReturn(bankAccount);
-        BankAccountService.doTransactionDeposit("0123456789", 100, "withdraw");
+        BankAccountService.doTransactionDeposit("0123456789", 100, "deposit");
         BankAccountService.doTransactionWithdraw("0123456789", 50, "withdraw");
 
 
         ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
         verify(bankAccountDao, times(3)).saveAccount(bankAccountArgument.capture());
-        verify(bankAccountDao).getInfoAboutAccount("0123456789");
+
         List<BankAccount> bankAccountList = bankAccountArgument.getAllValues();
 
         assertEquals(50, bankAccountList.get(2).getBalance(), 0.01);
         assertEquals("0123456789", bankAccountList.get(2).getNumAcc());
-        assertEquals("deposit", bankAccountList.get(2).getDes());
+        assertEquals("withdraw", bankAccountList.get(2).getDes());
     }
 
 }
