@@ -43,11 +43,23 @@ public class TestBankAccount
 
         when(bankAccountDao.getInfoAboutAccount("0123456789")).thenReturn(bankAccount);
 
-        ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
         verify(bankAccountDao).getInfoAboutAccount("0123456789");
 
-        assertEquals(0, bankAccountArgument.getValue().getBalance(), 0.01);
+        assertEquals(0, bankAccount.getBalance(), 0.01);
+        assertEquals("0123456789", bankAccount.getNumAcc());
+    }
+    @Test
+    public void testDoTransactionDeposit(){
+        BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
+        BankAccountService.doTransactionDeposit("0123456789", 100, "deposit");
+
+        ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
+        verify(bankAccountDao).saveAccount(bankAccountArgument.capture());
+        verify(bankAccountDao).getInfoAboutAccount("0123456789");
+
+        assertEquals(100, bankAccountArgument.getValue().getBalance(), 0.01);
         assertEquals("0123456789", bankAccountArgument.getValue().getNumAcc());
+        assertEquals("deposit", bankAccountArgument.getValue().getDes());
     }
 
 }

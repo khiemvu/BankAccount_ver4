@@ -11,6 +11,7 @@ public class BankAccount
 {
     String numberAcc;
     double balance;
+    String desciption;
 
     BankAccount(String numberAcc){
         this.numberAcc = numberAcc;
@@ -24,5 +25,10 @@ public class BankAccount
     public String getNumAcc()
     {
         return this.numberAcc;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public String getDes()
+    {
+        return this.desciption;  //To change body of created methods use File | Settings | File Templates.
     }
 }
