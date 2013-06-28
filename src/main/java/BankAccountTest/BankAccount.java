@@ -20,4 +20,9 @@ public class BankAccount
     {
         return 0;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public String getNumAcc()
+    {
+        return this.numberAcc;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

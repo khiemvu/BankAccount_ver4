@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 /**
@@ -38,11 +39,15 @@ public class TestBankAccount
     @Test
     public void testGetInfoAboutBankAccount(){
         BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
+        BankAccountService.getBankAccInfo("0123456789");
 
-        ArgumentCaptor<BankAccount> bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
+        when(bankAccountDao.getInfoAboutAccount("0123456789")).thenReturn(bankAccount);
+
+        ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
         verify(bankAccountDao).getInfoAboutAccount("0123456789");
 
         assertEquals(0, bankAccountArgument.getValue().getBalance(), 0.01);
+        assertEquals("0123456789", bankAccountArgument.getValue().getNumAcc());
     }
 
 }

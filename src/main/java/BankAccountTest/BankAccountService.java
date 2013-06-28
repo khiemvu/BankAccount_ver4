@@ -21,4 +21,9 @@ public class BankAccountService
         bankAccountDao.saveAccount(bankAccount);
         return bankAccount;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public static BankAccount getBankAccInfo(String accNumber)
+    {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 }
