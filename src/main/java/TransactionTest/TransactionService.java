@@ -9,13 +9,16 @@ package TransactionTest;
  */
 public class TransactionService
 {
+    private static TransactionDAO transactionDAO;
     public static TransactionDAO setUpData(TransactionDAO transactionDAO)
     {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return TransactionService.transactionDAO = transactionDAO;  //To change body of created methods use File | Settings | File Templates.
     }
 
     public static Transaction transactionDeposit(String accNum, long time, double amount, String des)
     {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        Transaction transaction = new Transaction(accNum, time, amount, des);
+        transactionDAO.saveTransaction(transaction);
+        return transaction;  //To change body of created methods use File | Settings | File Templates.
     }
 }
