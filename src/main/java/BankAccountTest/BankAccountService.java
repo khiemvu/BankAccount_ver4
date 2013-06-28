@@ -30,6 +30,10 @@ public class BankAccountService
 
     public static BankAccount doTransactionDeposit(String accNumber, double amount, String des)
     {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        BankAccount bankAccount = bankAccountDao.getInfoAboutAccount(accNumber);
+        bankAccount.setBalance(bankAccount.getBalance()+amount);
+        bankAccount.setDes(des);
+        bankAccountDao.saveAccount(bankAccount);
+        return bankAccount;  //To change body of created methods use File | Settings | File Templates.
     }
 }

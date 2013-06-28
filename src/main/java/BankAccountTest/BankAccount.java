@@ -19,7 +19,7 @@ public class BankAccount
     }
     public double getBalance()
     {
-        return 0;  //To change body of created methods use File | Settings | File Templates.
+        return this.balance;  //To change body of created methods use File | Settings | File Templates.
     }
 
     public String getNumAcc()
@@ -30,5 +30,15 @@ public class BankAccount
     public String getDes()
     {
         return this.desciption;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public void setBalance(double balance)
+    {
+        this.balance = balance;//To change body of created methods use File | Settings | File Templates.
+    }
+
+    public void setDes(String desciption)
+    {
+        this.desciption = desciption;//To change body of created methods use File | Settings | File Templates.
     }
 }

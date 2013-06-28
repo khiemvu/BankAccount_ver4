@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -51,10 +52,12 @@ public class TestBankAccount
     @Test
     public void testDoTransactionDeposit(){
         BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
+        when(bankAccountDao.getInfoAboutAccount("0123456789")).thenReturn(bankAccount);
         BankAccountService.doTransactionDeposit("0123456789", 100, "deposit");
 
+
         ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
-        verify(bankAccountDao).saveAccount(bankAccountArgument.capture());
+        verify(bankAccountDao, times(2)).saveAccount(bankAccountArgument.capture());
         verify(bankAccountDao).getInfoAboutAccount("0123456789");
 
         assertEquals(100, bankAccountArgument.getValue().getBalance(), 0.01);
