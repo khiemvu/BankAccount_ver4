@@ -28,19 +28,10 @@ public class BankAccountService
         return bankAccount;  //To change body of created methods use File | Settings | File Templates.
     }
 
-    public static BankAccount doTransactionDeposit(String accNumber, double amount, String des)
+    public static BankAccount doTransaction(String accNumber, double amount, String des)
     {
         BankAccount bankAccount = bankAccountDao.getInfoAboutAccount(accNumber);
         bankAccount.setBalance(bankAccount.getBalance()+amount);
-        bankAccount.setDes(des);
-        bankAccountDao.saveAccount(bankAccount);
-        return bankAccount;  //To change body of created methods use File | Settings | File Templates.
-    }
-
-    public static BankAccount doTransactionWithdraw(String accNumber, double amount, String des)
-    {
-        BankAccount bankAccount = bankAccountDao.getInfoAboutAccount(accNumber);
-        bankAccount.setBalance(bankAccount.getBalance()-amount);
         bankAccount.setDes(des);
         bankAccountDao.saveAccount(bankAccount);
         return bankAccount;  //To change body of created methods use File | Settings | File Templates.
