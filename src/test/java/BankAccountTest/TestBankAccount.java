@@ -6,10 +6,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -63,6 +63,23 @@ public class TestBankAccount
         assertEquals(100, bankAccountArgument.getValue().getBalance(), 0.01);
         assertEquals("0123456789", bankAccountArgument.getValue().getNumAcc());
         assertEquals("deposit", bankAccountArgument.getValue().getDes());
+    }
+    @Test
+    public void testDoTransactionWitdraw(){
+        BankAccount bankAccount = BankAccountService.opentBankAccount("0123456789");
+        when(bankAccountDao.getInfoAboutAccount("0123456789")).thenReturn(bankAccount);
+        BankAccountService.doTransactionDeposit("0123456789", 100, "withdraw");
+        BankAccountService.doTransactionWithdraw("0123456789", 50, "withdraw");
+
+
+        ArgumentCaptor< BankAccount > bankAccountArgument = ArgumentCaptor.forClass(BankAccount.class);
+        verify(bankAccountDao, times(3)).saveAccount(bankAccountArgument.capture());
+        verify(bankAccountDao).getInfoAboutAccount("0123456789");
+        List<BankAccount> bankAccountList = bankAccountArgument.getAllValues();
+
+        assertEquals(50, bankAccountList.get(2).getBalance(), 0.01);
+        assertEquals("0123456789", bankAccountList.get(2).getNumAcc());
+        assertEquals("deposit", bankAccountList.get(2).getDes());
     }
 
 }
