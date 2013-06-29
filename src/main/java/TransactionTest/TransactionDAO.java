@@ -25,4 +25,9 @@ public class TransactionDAO
     {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public List<Transaction> getAllTransaction(String accNumber, int number)
+    {
+        return null;
+    }
 }

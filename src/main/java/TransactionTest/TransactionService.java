@@ -33,4 +33,8 @@ public class TransactionService
     {
         return transactionDAO.getAllTransaction(accNumber,time_start, time_stop);  //To change body of created methods use File | Settings | File Templates.
     }
+    public List<Transaction> getAllTransaction(String accNumber, int number)
+    {
+        return transactionDAO.getAllTransaction(accNumber,number);  //To change body of created methods use File | Settings | File Templates.
+    }
 }
