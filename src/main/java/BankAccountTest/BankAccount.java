@@ -12,10 +12,12 @@ public class BankAccount
     String numberAcc;
     double balance;
     String desciption;
+    private long time_stamp;
 
-    BankAccount(String numberAcc){
+    BankAccount(String numberAcc, long time_stamp){
         this.numberAcc = numberAcc;
         this.balance = 0;
+        this.time_stamp = time_stamp;
     }
     public double getBalance()
     {
@@ -40,5 +42,10 @@ public class BankAccount
     public void setDes(String desciption)
     {
         this.desciption = desciption;//To change body of created methods use File | Settings | File Templates.
+    }
+
+    public long getTime()
+    {
+        return this.time_stamp;  //To change body of created methods use File | Settings | File Templates.
     }
 }

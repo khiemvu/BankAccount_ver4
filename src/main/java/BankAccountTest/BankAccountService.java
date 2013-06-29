@@ -15,9 +15,9 @@ public class BankAccountService
         BankAccountService.bankAccountDao = bankAccountDao;
     }
 
-    public static BankAccount opentBankAccount(String accNumber)
+    public static BankAccount opentBankAccount(String accNumber, long time_stamp)
     {
-        BankAccount bankAccount = new BankAccount(accNumber);
+        BankAccount bankAccount = new BankAccount(accNumber, time_stamp);
         bankAccountDao.saveAccount(bankAccount);
         return bankAccount;  //To change body of created methods use File | Settings | File Templates.
     }
