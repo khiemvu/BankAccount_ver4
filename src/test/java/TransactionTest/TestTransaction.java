@@ -50,4 +50,20 @@ public class TestTransaction
         assertEquals(timestamp.getTime(), transactionList.get(1).getTime());
 
     }
+    @Test
+    public void testGetAllTransaction()
+    {
+        TransactionService.doTransaction("0123456789", 100L, 100, "deposit");
+        TransactionService.doTransaction("0123456789", 1000L, 50, "deposit");
+
+        ArgumentCaptor<Transaction> transactionArgument = ArgumentCaptor.forClass(Transaction.class);
+        verify(transactionDAO, times(2)).saveTransaction(transactionArgument.capture());
+        List<Transaction> transactionList = transactionArgument.getAllValues();
+
+        when(transactionDAO.getAllTransaction("0123456789")).thenReturn(transactionList);
+        assertEquals(2, transactionList.size());
+        assertEquals(100, transactionList.get(0).getBalance(), 0.01);
+
+    }
+
 }
