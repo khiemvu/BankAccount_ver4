@@ -1,5 +1,7 @@
 package TransactionTest;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: All_in_one
@@ -12,5 +14,10 @@ public class TransactionDAO
     public Transaction saveTransaction(Transaction transaction)
     {
         return transaction;
+    }
+
+    public List<Transaction> getAllTransaction(String accNumber)
+    {
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }

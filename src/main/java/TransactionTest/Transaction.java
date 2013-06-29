@@ -27,4 +27,9 @@ public class Transaction
     {
         return this.time_stamp;  //To change body of created methods use File | Settings | File Templates.
     }
+
+    public double getBalance()
+    {
+        return this.amount;  //To change body of created methods use File | Settings | File Templates.
+    }
 }
