@@ -1,5 +1,7 @@
 package TransactionTest;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: All_in_one
@@ -22,4 +24,13 @@ public class TransactionService
         return transaction;  //To change body of created methods use File | Settings | File Templates.
     }
 
+    public static List<Transaction> getAllTransaction(String accNumber)
+    {
+        return transactionDAO.getAllTransaction(accNumber);  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public List<Transaction> getAllTransaction(String accNumber, long time_start, long time_stop)
+    {
+        return transactionDAO.getAllTransaction(accNumber,time_start, time_stop);  //To change body of created methods use File | Settings | File Templates.
+    }
 }
